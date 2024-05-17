@@ -5,7 +5,7 @@ import { getTokenFromUrl } from "./Spotify";
 import SpotifyWebApi from "spotify-web-api-js";
 import { useDataLayeValue } from "./DataLayer";
 import Player from "./Player";
-import { type } from "@testing-library/user-event/dist/type";
+// import { type } from "/@testing-library/user-event/dist/type";
 
 const spotify = new SpotifyWebApi();
 
@@ -22,26 +22,27 @@ function App() {
         token: _token,
       });
       spotify.setAccessToken(_token);
-    }
-    console.log("token", _token);
-    spotify.setAccessToken(_token);
-    spotify.getMe().then((user) => {
-      dispatch({ type: "SET_USER", user });
-    });
-    spotify.getUserPlaylists().then((playlists) => {
-      dispatch({
-        type: "SET_PLAYLISTS",
-        playlists,
-      });
-    });
 
-    spotify.getPlaylist("37i9dQZF1E34Ucml4HHx1w").then((playlist) => {
-      dispatch({
-        type: "SET_DISCOVER_WEEKLY",
-        discover_weekly: playlist,
+      console.log("token", _token);
+      spotify.setAccessToken(_token);
+      spotify.getMe().then((user) => {
+        dispatch({ type: "SET_USER", user });
       });
-    });
-  });
+      spotify.getUserPlaylists().then((playlists) => {
+        dispatch({
+          type: "SET_PLAYLISTS",
+          playlists,
+        });
+      });
+
+      spotify.getPlaylist("37i9dQZF1E34Ucml4HHx1w").then((playlist) => {
+        dispatch({
+          type: "SET_DISCOVER_WEEKLY",
+          discover_weekly: playlist,
+        });
+      });
+    }
+  }, []);
 
   return (
     <div className="App">
