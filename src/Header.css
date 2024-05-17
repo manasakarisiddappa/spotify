@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  -webkit-font-smoothing: antialised;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
